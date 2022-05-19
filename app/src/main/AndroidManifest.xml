@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval">
         <activity
-            android:name=".ActividadPerfil"
+            android:name=".actividades.ActividadPerfil"
             android:exported="false" />
         <activity
             android:name=".actividades.ActividadUbicacion"
