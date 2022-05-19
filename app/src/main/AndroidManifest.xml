@@ -10,7 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval">
         <activity
-            android:name=".MainActivity"
+            android:name=".ActividadPerfil"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.ActividadUbicacion"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".actividades.ActividadEvento"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".actividades.ActividadStand"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".actividades.ActividadInicial"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Carnaval.NoActionBar">
