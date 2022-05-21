@@ -35,9 +35,12 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
 
         map = googleMap
-        val sydney = LatLng(-34.0, 151.0)
-        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val ubicacionFeria = LatLng(-34.667245, -58.5628052)
+        map.addMarker(MarkerOptions().position(ubicacionFeria).title("Feria Carnaval"))
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(ubicacionFeria,15f),
+        2500,
+        null
+        )
 
     }
 
