@@ -13,7 +13,6 @@ import com.example.carnaval.R
 
 class ActividadInicial : AppCompatActivity() {
     lateinit var Icodigo: EditText
-    lateinit var NumeroEntrada: String
     lateinit var Codigos: Array<String>
     lateinit var S: String
     override fun onCreate(savedInstanceState: Bundle?) {
