@@ -37,14 +37,15 @@ fun performSignUp(v: View?) {
 
         // data al servidor
         val password: String = Icodigo.getText().toString()
-        Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()
-
-    }
+        Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()}
+else
+        {
+            Icodigo.error = "El Codigo ingresado es incorrecto"
+        }
 }
 private fun verStands() {
     val intent = Intent(this, ActividadStand::class.java)
     startActivity(intent)
 }
-
 
 }
