@@ -56,8 +56,7 @@ class ActividadInicial : AppCompatActivity() {
                         return S
                     }
                 }
-                Icodigo.error = "El codigo no es valido"
-                return S
+                
             }
         }
 
