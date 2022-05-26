@@ -8,44 +8,53 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.PatternsCompat
 import com.example.carnaval.R
 
 class ActividadInicial : AppCompatActivity() {
-    lateinit var Icodigo : EditText
+    lateinit var Icodigo: EditText
+    lateinit var NumeroEntrada: String
+    lateinit var Codigos: Array<String>
+    lateinit var S: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actividad_inicial)
         Initialize()
     }
- fun Initialize (){
-     Icodigo = findViewById(R.id.Codigo)
- }
-    fun validateEmpty(): Boolean{
+
+    fun Initialize() {
+        Icodigo = findViewById(R.id.Codigo)
+    }
+
+    fun validateEmpty(): Boolean {
         /* Da error si el campo de codigo de entrada esta vacio*/
-        if (Icodigo.text.toString()=="") {
+        if (Icodigo.text.toString() == "") {
             Icodigo.error = "Debe Ingresar el codigo de entrada"
             return false
         }
         return true;
     }
-/* Esta funcion seria para verificar que el codigo de entrada esta en el server
-fun ExistCode(): String{
-   return Patterns.PASSWORD.matcher(Icodigo).matches();
-}*/
-fun performSignUp(v: View?) {
-    if (validateEmpty()) {
 
-        // data al servidor
-        val password: String = Icodigo.getText().toString()
-        Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()}
-else
-        {
-            Icodigo.error = "El Codigo ingresado es incorrecto"
+    fun ExistCode(): String {
+
+        S = "Codigo de entrada no valido"
+        for (n in Codigos) {
+            if (n== Icodigo.toString())
+                Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()
+            else {
+                Icodigo.error = "El codigo no es valido"
+                return S
+            }
         }
-}
-private fun verStands() {
-    val intent = Intent(this, ActividadStand::class.java)
-    startActivity(intent)
-}
+
+        return Icodigo.toString()
+    }
+
+    private fun verStands() {
+        val intent = Intent(this, ActividadStand::class.java)
+        startActivity(intent)
+    }
+
+
 
 }
