@@ -13,7 +13,10 @@ import com.example.carnaval.R
 
 class ActividadInicial : AppCompatActivity() {
     lateinit var Icodigo: EditText
+    lateinit var NumeroEntrada: String
+    lateinit var CodigosV: Array<String>
     lateinit var Codigos: Array<String>
+    protected var VIP: Boolean = false
     lateinit var S: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +40,22 @@ class ActividadInicial : AppCompatActivity() {
     fun ExistCode(): String {
 
         S = "Codigo de entrada no valido"
-        for (n in Codigos) {
-            if (n == Icodigo.toString())
-                Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()
+        for (n in CodigosV) {
+            if (n== Icodigo.toString()){
+                Toast.makeText(this, "Exito. Bienvenido a la seccion VIP", Toast.LENGTH_SHORT).show()
+            VIP= true
+            }
             else {
+                for (n in Codigos){
+                    if(n== Icodigo.toString()){
+                        Toast.makeText(this, "Exito. Bienvenido a la seccion VIP", Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                    {
+                        Icodigo.error = "El codigo no es valido"
+                        return S
+                    }
+                }
                 Icodigo.error = "El codigo no es valido"
                 return S
             }
@@ -54,5 +69,4 @@ class ActividadInicial : AppCompatActivity() {
         startActivity(intent)
     }
 
-    
 }
