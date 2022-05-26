@@ -42,13 +42,13 @@ class ActividadInicial : AppCompatActivity() {
         S = "Codigo de entrada no valido"
         for (n in CodigosV) {
             if (n== Icodigo.toString()){
-                Toast.makeText(this, "Exito. Bienvenido a la seccion VIP", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Exito. Gracias por comprar una entrada VIP", Toast.LENGTH_SHORT).show()
             VIP= true
             }
             else {
                 for (n in Codigos){
                     if(n== Icodigo.toString()){
-                        Toast.makeText(this, "Exito. Bienvenido a la seccion VIP", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()
                     }
                     else
                     {
