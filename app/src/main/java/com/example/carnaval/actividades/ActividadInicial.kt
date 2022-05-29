@@ -15,7 +15,7 @@ class ActividadInicial : AppCompatActivity() {
         binding =ActivityActividadInicialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonMap.setOnClickListener { verUbicacion() }
+        binding.buttonMap.setOnClickListener { verCamara() }
 
 
 
@@ -27,6 +27,10 @@ class ActividadInicial : AppCompatActivity() {
     }
     private fun verUbicacion() {
         val intent = Intent(this, ActividadUbicacion::class.java)
+        startActivity(intent)
+    }
+    private fun verCamara() {
+        val intent = Intent(this, ActividadCamara::class.java)
         startActivity(intent)
     }
 }
