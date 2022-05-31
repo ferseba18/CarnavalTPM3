@@ -2,16 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".actividades.ActividadInicial">
 
-    <Button
-        android:id="@+id/button_map"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Button"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="327dp" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mapa" />
+
+        <Button
+            android:id="@+id/camara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camara"
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="327dp" />
+
+        <Button
+            android:id="@+id/lector_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lector QR"
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="327dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

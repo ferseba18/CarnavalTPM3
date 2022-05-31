@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval">
         <activity
+            android:name=".actividades.ActividadLectorQR"
+            android:exported="false" />
+        <activity
             android:name=".actividades.ActividadCamara"
             android:exported="false" />
 

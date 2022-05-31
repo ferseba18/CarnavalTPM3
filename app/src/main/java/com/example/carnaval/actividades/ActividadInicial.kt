@@ -15,7 +15,9 @@ class ActividadInicial : AppCompatActivity() {
         binding =ActivityActividadInicialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonMap.setOnClickListener { verCamara() }
+        binding.buttonMap.setOnClickListener { verUbicacion() }
+        binding.camara.setOnClickListener { verCamara() }
+        binding.lectorQr.setOnClickListener { verQR() }
 
 
 
@@ -31,6 +33,10 @@ class ActividadInicial : AppCompatActivity() {
     }
     private fun verCamara() {
         val intent = Intent(this, ActividadCamara::class.java)
+        startActivity(intent)
+    }
+    private fun verQR() {
+        val intent = Intent(this, ActividadLectorQR::class.java)
         startActivity(intent)
     }
 }
