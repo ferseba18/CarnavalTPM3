@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu"
+        android:enabled="true"
+        android:icon="@drawable/menu"
+        android:title="@string/men"/>
+    <item
+        android:id="@+id/ubicacion"
+        android:enabled="true"
+        android:icon="@drawable/ubicacion"
+        android:title="@string/ubicaci_n"/>
+    <item
+        android:id="@+id/QR"
+        android:enabled="true"
+        android:icon="@drawable/qr"
+        android:title="@string/QR"/>
+    <item
+        android:id="@+id/premios"
+        android:enabled="true"
+        android:icon="@drawable/premios"
+        android:title="@string/premios" />
+    <item
+        android:id="@+id/camara"
+        android:enabled="true"
+        android:icon="@drawable/camera"
+        android:title="@string/camara" />
+</menu>

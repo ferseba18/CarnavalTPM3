@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval">
         <activity
+            android:name=".actividades.LectorQrAcivity"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.MenuPrincipalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.activity_premios"
+            android:exported="false" />
+        <activity
             android:name=".actividades.ActividadPerfil"
             android:exported="false" />
         <activity
