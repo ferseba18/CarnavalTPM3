@@ -6,45 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".actividades.MenuPrincipalActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_carnaval"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/appbar_top"
-        app:title="Puntos : 100"
-        app:titleTextColor="#9C27B0"
-        tools:ignore="NotSibling">
-
-    </androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/Eventos"
+        android:id="@+id/Tragos"
         android:layout_width="372dp"
         android:layout_height="136dp"
         android:layout_marginHorizontal="5dp"
         android:layout_marginVertical="5dp"
-        app:cardBackgroundColor="#A11A48"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="#009688"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_carnaval"
-        app:layout_constraintVertical_bias="0.057">
-
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/eventos"
+            android:id="@+id/Drinks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="18dp"
             android:layout_marginTop="10dp"
             android:gravity="bottom|end"
-            android:text="@string/eventos"
+            android:text="@string/bebidas"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -52,57 +35,27 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/gastronomia"
+        android:id="@+id/Tapeos"
         android:layout_width="372dp"
         android:layout_height="136dp"
         android:layout_marginHorizontal="5dp"
         android:layout_marginVertical="5dp"
-        app:cardCornerRadius="15dp"
         app:cardBackgroundColor="#009688"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_carnaval"
-        app:layout_constraintVertical_bias="0.867">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.871">
 
         <TextView
-            android:id="@+id/food"
+            android:id="@+id/Picadas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="18dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/gastronom_a"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/STANDS"
-        android:layout_width="372dp"
-        android:layout_height="136dp"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="5dp"
-        android:layout_marginTop="166dp"
-        android:layout_marginBottom="175dp"
-        app:cardBackgroundColor="#FFEB3B"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/gastronomia"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Eventos">
-
-        <TextView
-            android:id="@+id/puestos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="@string/stands"
+            android:text="@string/picadas"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -119,5 +72,31 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Hamburguesas"
+        android:layout_width="372dp"
+        android:layout_height="136dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        app:cardBackgroundColor="#009688"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/Tapeos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tragos">
+
+        <TextView
+            android:id="@+id/Burger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/Burger"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

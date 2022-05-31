@@ -19,4 +19,12 @@
     <string name="stands">Stands</string>
     <string name="puntos">Puntos</string>
     <string name="lector_de_qr">LECTOR DE QR</string>
+    <string name="Tragos" />
+    <string name="Tapeos" />
+    <string name="Burger">Burger</string>
+    <string name="picadas">Picadas</string>
+    <string name="bebidas">Bebidas</string>
+    <string name="stand_1">Stand 1</string>
+    <string name="stand_2">STAND 2</string>
+    <string name="evento_2">Evento 2</string>
 </resources>

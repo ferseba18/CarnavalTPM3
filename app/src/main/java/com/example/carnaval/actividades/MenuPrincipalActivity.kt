@@ -46,6 +46,10 @@ class MenuPrincipalActivity : AppCompatActivity() {
             }
 
         }
+
+        bindingMenu.Eventos.setOnClickListener { evento() }
+        bindingMenu.STANDS.setOnClickListener { stands() }
+        bindingMenu.gastronomia.setOnClickListener { gastronomia() }
     }
 
     private fun location(){
@@ -61,5 +65,20 @@ class MenuPrincipalActivity : AppCompatActivity() {
     private fun premios(){
         val premios = Intent (this, activity_premios::class.java)
         startActivity(premios)
+    }
+
+    private fun evento(){
+        val evento = Intent (this, ActividadEvento::class.java)
+        startActivity(evento)
+    }
+
+    private fun gastronomia(){
+        val food = Intent (this, GastronomiaActivity::class.java)
+        startActivity(food)
+    }
+
+    private fun stands(){
+        val stands = Intent (this, ActividadStand::class.java)
+        startActivity(stands)
     }
 }
