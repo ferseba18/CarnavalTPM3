@@ -17,7 +17,7 @@ class ActividadInicial : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actividad_inicial)
         val btn = findViewById<Button>(R.id.Ingresar)
-        btn.setOnClickListener { verUbicacion() }
+        btn.setOnClickListener { menuPrincipal() }
         Initialize()
     }
 
@@ -49,13 +49,9 @@ class ActividadInicial : AppCompatActivity() {
     }
 
 
-    private fun verStands() {
-        val intent = Intent(this, ActividadStand::class.java)
-        startActivity(intent)
-    }
 
-    private fun verUbicacion() {
-        val intent = Intent(this, ActividadUbicacion::class.java)
+    private fun menuPrincipal() {
+        val intent = Intent(this, MenuPrincipalActivity::class.java)
         startActivity(intent)
     }
 
