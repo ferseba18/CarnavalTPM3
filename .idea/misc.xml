@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_actividad_camara.xml" value="0.203125" />
+        <entry key="..\:/CarnavalTPM3-master/app/src/main/res/drawable/ic_outer_circle.xml" value="0.2115" />
+        <entry key="..\:/CarnavalTPM3-master/app/src/main/res/drawable/ic_shutter_focused.xml" value="0.1885" />
+        <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_actividad_camara.xml" value="0.1" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_actividad_inicial.xml" value="0.20416666666666666" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_actividad_ubicacion.xml" value="0.2" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
