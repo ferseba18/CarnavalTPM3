@@ -39,6 +39,10 @@ class MenuPrincipalActivity : AppCompatActivity() {
                     premios()
                     true
                 }
+                R.id.camara-> {
+                    camara()
+                    true
+                }
 
                 else -> {
                     super.onOptionsItemSelected(item)
@@ -77,8 +81,13 @@ class MenuPrincipalActivity : AppCompatActivity() {
         startActivity(food)
     }
 
+    private fun camara(){
+        val camara = Intent (this, ActividadCamara::class.java)
+        startActivity(camara)
+    }
     private fun stands(){
         val stands = Intent (this, ActividadStand::class.java)
         startActivity(stands)
     }
+
 }

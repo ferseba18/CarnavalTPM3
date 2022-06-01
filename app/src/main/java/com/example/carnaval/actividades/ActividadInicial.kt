@@ -25,6 +25,7 @@ class ActividadInicial : AppCompatActivity() {
         Icodigo = findViewById(R.id.Codigo)
     }
 
+
     fun validateEmpty(): Boolean {
         /* Da error si el campo de codigo de entrada esta vacio*/
         if (Icodigo.text.toString() == "") {
@@ -55,4 +56,12 @@ class ActividadInicial : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun verCamara() {
+        val intent = Intent(this, ActividadCamara::class.java)
+        startActivity(intent)
+    }
+    private fun verQR() {
+        val intent = Intent(this, ActividadLectorQR::class.java)
+        startActivity(intent)
+    }
 }

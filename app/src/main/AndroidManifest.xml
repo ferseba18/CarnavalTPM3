@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.carnaval">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_feria"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_feria_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval">
         <activity
             android:name=".actividades.GastronomiaActivity"
             android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
+        <activity
+            android:name=".actividades.ActividadLectorQR"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.ActividadCamara"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -25,14 +42,11 @@
         <activity
             android:name=".actividades.MenuPrincipalActivity"
             android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.activity_premios"
             android:exported="false" />
-        <activity
-            android:name=".actividades.ActividadPerfil"
-            android:exported="false"
-            tools:ignore="MissingClass" />
+
         <activity
             android:name=".actividades.ActividadUbicacion"
             android:exported="false"
@@ -40,11 +54,13 @@
         <activity
             android:name=".actividades.ActividadEvento"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
         <activity
             android:name=".actividades.ActividadStand"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
         <activity
             android:name=".actividades.ActividadInicial"
             android:exported="true"
