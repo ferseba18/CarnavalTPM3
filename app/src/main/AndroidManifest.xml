@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Carnaval">
         <activity
             android:name=".actividades.GastronomiaActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -22,7 +23,8 @@
             android:exported="false" />
         <activity
             android:name=".actividades.MenuPrincipalActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
         <activity
             android:name=".actividades.activity_premios"
             android:exported="false" />
