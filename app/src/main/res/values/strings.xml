@@ -9,7 +9,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-<<<<<<< HEAD
     <string name="ubicaci_n">Ubicación</string>
     <string name="camara">Camara</string>
     <string name="premios">Premios</string>
@@ -28,8 +27,6 @@
     <string name="stand_1">Stand 1</string>
     <string name="stand_2">STAND 2</string>
     <string name="evento_2">Evento 2</string>
-=======
     <string name="ingresar">Ingresar</string>
     <string name="todo">TODO</string>
->>>>>>> Branch-Fer
 </resources>
