@@ -50,8 +50,4 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback {
         val intent = Intent(this, ActividadStand::class.java)
         startActivity(intent)
     }
-    private fun verPerfil() {
-        val intent = Intent(this, ActividadPerfil::class.java)
-        startActivity(intent)
-    }
 }

@@ -8,6 +8,7 @@
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/fragment_first.xml" value="0.20416666666666666" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/fragment_second.xml" value="0.20416666666666666" />
+<<<<<<< HEAD
         <entry key="..\:/Users/Sebastian/Documents/ANA/Tp/CarnavalTPM3/app/src/main/res/layout/activity_actividad_evento.xml" value="0.14792299898682879" />
         <entry key="..\:/Users/Sebastian/Documents/ANA/Tp/CarnavalTPM3/app/src/main/res/layout/activity_actividad_stand.xml" value="0.14792299898682879" />
         <entry key="..\:/Users/Sebastian/Documents/ANA/Tp/CarnavalTPM3/app/src/main/res/layout/activity_gastronomia.xml" value="0.22" />
@@ -16,6 +17,10 @@
         <entry key="..\:/Users/Sebastian/Documents/ANA/Tp/CarnavalTPM3/app/src/main/res/layout/activity_premios.xml" value="0.25" />
         <entry key="..\:/Users/Sebastian/Documents/ANA/Tp/CarnavalTPM3/app/src/main/res/menu/appbar_top.xml" value="0.2994871794871795" />
         <entry key="..\:/Users/Sebastian/Documents/ANA/Tp/CarnavalTPM3/app/src/main/res/menu/bottom_navigation.xml" value="0.2388888888888889" />
+=======
+        <entry key="..\:/Users/Fernando/Desktop/CarnavalTPM3/app/src/main/res/layout/activity_actividad_inicial.xml" value="0.1" />
+        <entry key="..\:/Users/Fernando/Desktop/CarnavalTPM3/app/src/main/res/layout/activity_actividad_perfil.xml" value="0.33" />
+>>>>>>> Branch-Fer
       </map>
     </option>
   </component>
