@@ -21,6 +21,9 @@
         android:roundIcon="@mipmap/ic_feria_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval">
+        <activity
+            android:name=".TransactionActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -28,7 +31,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
 
         <activity
             android:name=".actividades.GastronomiaActivity"
@@ -40,7 +42,6 @@
         <activity
             android:name=".actividades.ActividadCamara"
             android:exported="false" />
-
         <activity
             android:name=".actividades.LectorQrAcivity"
             android:exported="false" />
@@ -51,7 +52,6 @@
         <activity
             android:name=".actividades.activity_premios"
             android:exported="false" />
-
         <activity
             android:name=".actividades.ActividadUbicacion"
             android:exported="false"
@@ -60,12 +60,12 @@
             android:name=".actividades.ActividadEvento"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.ActividadStand"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.ActividadInicial"
             android:exported="true"

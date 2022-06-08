@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actividades.TransactionActivity">
+
+    <LinearLayout
+        android:id="@+id/contenedorNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/titulo_puntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Tus Puntos Son:"
+            android:textAlignment="textStart"
+            android:textColor="#0B0909"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/puntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:padding="10dp"
+            android:text="200"
+            android:textAlignment="viewEnd"
+            android:textColor="#D10606"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/contenedorNav">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listadoDePuntos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
