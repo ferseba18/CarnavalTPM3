@@ -5,9 +5,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.content.ContextCompat
 import com.example.carnaval.R
 import com.example.carnaval.databinding.ActivityActividadUbicacionBinding
@@ -15,13 +19,16 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolygonOptions
+import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
+import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener
+import android.location.Location
 
-class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
-     {
+class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
+    OnRequestPermissionsResultCallback {
 
     private lateinit var binding: ActivityActividadUbicacionBinding
     private lateinit var map: GoogleMap
@@ -31,7 +38,7 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
     private val COLOR_EVENTOS = -0x7e387c
 
     companion object {
-        const val LOCATION_REQUEST_CODE = 0
+        const val LOCATION_REQUEST_CODE = 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,10 +65,54 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
         createPolylineStands()
         createMarker()
 
-
+        map.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
         enableMyLocation()
     }
+
+    internal inner class CustomInfoWindowAdapter : GoogleMap.InfoWindowAdapter {
+
+        // These are both view groups containing an ImageView with id "badge" and two
+        // TextViews with id "title" and "snippet".
+        private val window: View = layoutInflater.inflate(R.layout.custom_info_window, null)
+        private val contents: View = layoutInflater.inflate(R.layout.custom_info_contents, null)
+
+        override fun getInfoWindow(marker: Marker): View? {
+
+            render(marker, window)
+            return window
+        }
+
+        override fun getInfoContents(marker: Marker): View? {
+
+            render(marker, contents)
+            return contents
+        }
+
+        private fun render(marker: Marker, view: View) {
+            val badge = when (marker.title!!) {
+                "Gastronomia" -> R.drawable.food_
+                "Eventos" -> R.drawable.recital_lolla
+                "Stands" -> R.drawable.stand_kermes
+                "Carnaval" -> R.drawable.feria_mapa_principal
+                else -> 0 // Passing 0 to setImageResource will clear the image view.
+            }
+
+            view.findViewById<ImageView>(R.id.badge).setImageResource(badge)
+
+            // Set the title and snippet for the custom info window
+            val title: String? = marker.title
+            val titleUi = view.findViewById<TextView>(R.id.title)
+            val snippet: String? = marker.snippet
+            val snippetUi = view.findViewById<TextView>(R.id.snippet)
+
+            snippetUi.text = snippet
+            titleUi.text = title
+
+
+        }
+    }
+
 
     private fun createMarker() {
 
@@ -70,13 +121,25 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
         val ubicacionStand = LatLng(-34.66865262913868, -58.56489658355712)
         val ubicacionGastronomia = LatLng(-34.667205482314564, -58.562986850738525)
 
-        map.addMarker(MarkerOptions().position(ubicacionFeria).title("Feria Carnaval"))?.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.concierto))
-        map.addMarker(MarkerOptions().position(ubicacionGastronomia).title("Patio De Comidas"))
-        map.addMarker(MarkerOptions().position(ubicacionEvento).title("Eventos"))
-        map.addMarker(MarkerOptions().position(ubicacionStand).title("Stands"))
+        map.addMarker(
+            MarkerOptions().position(ubicacionFeria).title("Carnaval")
+                .snippet("Un festival donde encontraras juegos de destreza, juegos mecánicos, puestos de comida y bebida, sorteos y números artísticos")
+        )
+        map.addMarker(
+            MarkerOptions().position(ubicacionGastronomia).title("Gastronomia")
+                .snippet("Un espacio gastronómico para vivir un encuentro de diversidad de culturas.")
+        )
+        map.addMarker(
+            MarkerOptions().position(ubicacionEvento).title("Eventos")
+                .snippet("Es un lugar donde encontraras musica de todos los estilos; también hay actuaciones cómicas y de danza.")
+        )
+        map.addMarker(
+            MarkerOptions().position(ubicacionStand).title("Stands")
+                .snippet("Un lugar donde podras encontrar nuestros productos y servicios")
+        )
 
         map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(ubicacionFeria, 13f),
+            CameraUpdateFactory.newLatLngZoom(ubicacionFeria, 15f),
             2500,
             null
         )
@@ -148,6 +211,9 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
     private fun isPermissionsGranted() = ContextCompat.checkSelfPermission(
         this,
         Manifest.permission.ACCESS_FINE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+        this,
+        Manifest.permission.ACCESS_COARSE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED
 
     //comprueba si el mapa ha sido inicializado, si no es así saldrá de la función gracias a la palabra return,
@@ -159,6 +225,7 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
         if (!::map.isInitialized) return
         if (isPermissionsGranted()) {
             map.isMyLocationEnabled = true
+            return
         } else {
             requestLocationPermission()
         }
@@ -168,15 +235,22 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
+            ) || ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
             )
         ) {
             Toast.makeText(this, "Ve a ajustes y acepta los permisos ", Toast.LENGTH_SHORT).show()
         } else {
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
                 LOCATION_REQUEST_CODE
             )
+
         }
     }
 
@@ -190,17 +264,18 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback
 
 
                 enableMyLocation()
-
+                return
             } else {
                 Toast.makeText(
                     this,
                     "Para activar la localización ve a ajustes y acepta los permisos",
                     Toast.LENGTH_SHORT
                 ).show()
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults)
             }
             else -> {}
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
     }
 
     private fun verStand() {
