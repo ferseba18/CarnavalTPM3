@@ -23,6 +23,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
         navigationBottom.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu -> {
+                    transaction()
                     true
                 }
                 R.id.ubicacion -> {
@@ -88,6 +89,10 @@ class MenuPrincipalActivity : AppCompatActivity() {
     private fun stands(){
         val stands = Intent (this, ActividadStand::class.java)
         startActivity(stands)
+    }
+    private fun transaction(){
+        val transaction = Intent (this, TransactionActivity::class.java)
+        startActivity(transaction)
     }
 
 }

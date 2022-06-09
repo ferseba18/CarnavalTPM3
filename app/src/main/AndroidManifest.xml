@@ -21,9 +21,11 @@
         android:roundIcon="@mipmap/ic_feria_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval">
+
         <activity
-            android:name=".TransactionActivity"
-            android:exported="false" />
+            android:name=".actividades.TransactionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -38,10 +40,12 @@
             android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.ActividadLectorQR"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
         <activity
             android:name=".actividades.ActividadCamara"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
         <activity
             android:name=".actividades.LectorQrAcivity"
             android:exported="false" />
@@ -51,7 +55,8 @@
             android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.activity_premios"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
         <activity
             android:name=".actividades.ActividadUbicacion"
             android:exported="false"
