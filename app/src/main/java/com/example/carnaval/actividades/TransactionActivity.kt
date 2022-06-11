@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carnaval.R
 import com.example.carnaval.adaptadores.AdapatadorTransaction
 import com.example.carnaval.databinding.ActivityTransactionBinding
+import com.example.carnaval.modelo.PuntoModel
 import com.example.carnaval.modelo.PuntoProvider
 
 class TransactionActivity : AppCompatActivity() {
@@ -22,10 +23,25 @@ class TransactionActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView(){
+
+        var puntosTotal = binding.totalPuntos
+        puntosTotal.text = cantidadTotalDePuntos(PuntoProvider.listaDePuntos)
         val manager = LinearLayoutManager(this)
         val recyclerView = binding.listadoDePuntos
         recyclerView.layoutManager = manager
         recyclerView.adapter = AdapatadorTransaction(PuntoProvider.listaDePuntos)
+
+    }
+
+    private fun cantidadTotalDePuntos(listaDePuntos:List<PuntoModel>):String{
+
+        var cantidadTotalDePuntos = 0
+
+        listaDePuntos.forEach {
+            cantidadTotalDePuntos+= it.cantidad
+        }
+
+        return cantidadTotalDePuntos.toString()
 
     }
 }

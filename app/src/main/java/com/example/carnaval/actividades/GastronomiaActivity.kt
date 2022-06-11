@@ -62,7 +62,7 @@ class GastronomiaActivity : AppCompatActivity() {
     }
 
     private fun qr(){
-        val qr = Intent (this, LectorQrAcivity::class.java)
+        val qr = Intent (this, ActividadLectorQR::class.java)
         startActivity(qr)
     }
 
