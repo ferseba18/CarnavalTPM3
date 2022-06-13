@@ -32,9 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20sp"
-            android:text="200"
             android:textAlignment="viewEnd"
-            android:textColor="#D10606"
+            android:textColor="#3AB106"
             android:textSize="20sp"
             android:textStyle="bold"
             android:typeface="serif" />

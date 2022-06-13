@@ -6,30 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".actividades.ActividadLectorQR">
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/tituloTranaccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#38BA0A"
-        android:text="COMPRAR"
-        app:iconTint="#3EC825"
+        android:text="Lee el codigo QR para realizar la operacion"
+        android:textAlignment="center"
+        android:textColor="#070303"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <LinearLayout
+        android:id="@+id/contenedorBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnComprar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_verde"
+            android:text="COMPRAR"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_verde"
+            android:text="CANCELAR"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="number"
         android:outlineAmbientShadowColor="@color/black"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/contenedorBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.87" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
