@@ -116,7 +116,7 @@ class ActividadLectorQR : AppCompatActivity() {
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_LONG).show()
                 menuPrincipal()
             } else {
-                
+
                 val tipoDeTransaccion = result.contents.toInt()
                 tituloTransaccion(tipoDeTransaccion)
                 binding.btnComprar.setOnClickListener {
