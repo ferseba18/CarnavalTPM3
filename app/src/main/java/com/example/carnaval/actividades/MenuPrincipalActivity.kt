@@ -3,10 +3,15 @@ package com.example.carnaval.actividades
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carnaval.R
+import com.example.carnaval.adaptadores.AdapterCategory
 import com.example.carnaval.databinding.ActivityMenuPrincipalBinding
+import com.example.carnaval.modelo.StandCategoryProvider
+import kotlin.text.isEmpty as textIsEmpty
 
 class MenuPrincipalActivity : AppCompatActivity() {
+
     private lateinit var bindingMenu: ActivityMenuPrincipalBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,8 +19,18 @@ class MenuPrincipalActivity : AppCompatActivity() {
         bindingMenu = ActivityMenuPrincipalBinding.inflate(layoutInflater)
         setContentView(bindingMenu.root)
 
+
+        initRecyclerView()
+
         setListener()
     }
+
+    private fun initRecyclerView() {
+        val recyclerView = bindingMenu.listadoDeCategorias
+        recyclerView.layoutManager =LinearLayoutManager(this)
+        recyclerView.adapter = AdapterCategory(StandCategoryProvider.categorias)
+    }
+
 
     private fun setListener() {
 
@@ -52,9 +67,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
         }
 
-        bindingMenu.Eventos.setOnClickListener { evento() }
-        bindingMenu.STANDS.setOnClickListener { stands() }
-        bindingMenu.gastronomia.setOnClickListener { gastronomia() }
+
     }
 
     private fun location(){
@@ -93,6 +106,11 @@ class MenuPrincipalActivity : AppCompatActivity() {
     private fun transaction(){
         val transaction = Intent (this, TransactionActivity::class.java)
         startActivity(transaction)
+    }
+
+    private fun validacionDeEntrada(){
+        val inicial = Intent (this, ActividadInicial::class.java)
+        startActivity(inicial)
     }
 
 }

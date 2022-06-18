@@ -93,7 +93,7 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
             val badge = when (marker.title!!) {
                 "Gastronomia" -> R.drawable.food_
                 "Eventos" -> R.drawable.recital_lolla
-                "Stands" -> R.drawable.stand_kermes
+                "Juegos" -> R.drawable.stand_kermes
                 "Carnaval" -> R.drawable.feria_mapa_principal
                 else -> 0 // Passing 0 to setImageResource will clear the image view.
             }
@@ -134,8 +134,8 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
                 .snippet("Es un lugar donde encontraras musica de todos los estilos; también hay actuaciones cómicas y de danza.")
         )
         map.addMarker(
-            MarkerOptions().position(ubicacionStand).title("Stands")
-                .snippet("Un lugar donde podras encontrar nuestros productos y servicios")
+            MarkerOptions().position(ubicacionStand).title("Juegos")
+                .snippet("Un lugar donde podras encontrar divertirte y mostras tus destrezas")
         )
 
         map.animateCamera(

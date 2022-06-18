@@ -15,6 +15,9 @@ class ActividadStand : AppCompatActivity() {
 
         setContentView(bindingMenu.root)
 
+
+
+
         setListener()
     }
     private fun setListener() {
@@ -87,5 +90,6 @@ class ActividadStand : AppCompatActivity() {
         val stands = Intent (this, ActividadStand::class.java)
         startActivity(stands)
     }
+
 
 }

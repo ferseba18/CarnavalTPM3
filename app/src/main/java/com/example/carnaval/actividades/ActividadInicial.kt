@@ -9,63 +9,83 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.example.carnaval.R
+import com.example.carnaval.databinding.ActivityActividadInicialBinding
+import com.example.carnaval.modelo.PuntoModel
+import com.example.carnaval.modelo.PuntoProvider
 
 class ActividadInicial : AppCompatActivity() {
 
-    lateinit var Icodigo: EditText
-    lateinit var NumeroEntrada: String
-    lateinit var CodigosV: Array<String>
-    lateinit var Codigos: Array<String>
-    protected var VIP: Boolean = false
-    lateinit var S: String
+    val ENTRADA_GOLDEN = "golden"
+    val ENTRADA_SILVER = "silver"
+    val ENTRADA_BRONZE = "bronze"
+
+    var codigoValidado:Boolean = false
+
+    private lateinit var binding:ActivityActividadInicialBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_actividad_inicial)
-        Initialize()
-    }
+        binding = ActivityActividadInicialBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    fun Initialize() {
-        Icodigo = findViewById(R.id.Codigo)
-    }
-
-
-    fun validateEmpty(): Boolean {
-        /* Da error si el campo de codigo de entrada esta vacio*/
-        if (Icodigo.text.toString() == "") {
-            Icodigo.error = "Debe Ingresar el codigo de entrada"
-            return false
+        if (codigoValidado){
+            verMenuPrincipal()
         }
-        return true;
+
+        binding.Ingresar.setOnClickListener { cargarBeneficiosDeEntrada() }
+
+
     }
 
-    fun ExistCode(): String {
+    private fun cargarBeneficiosDeEntrada() {
 
-        S = "Codigo de entrada no valido"
-        for (n in CodigosV) {
-            if (n== Icodigo.toString()){
-                Toast.makeText(this, "Exito. Bienvenido a la seccion VIP", Toast.LENGTH_SHORT).show()
-                VIP= true
+        val codigo = binding.Codigo.text.toString()
+
+        if (codigo.isEmpty()){
+            Toast.makeText(this, "Ingrese el codigo de su entrada", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        when(codigo){
+
+            ENTRADA_GOLDEN->{
+                PuntoProvider.listaDePuntos.add(PuntoModel(1000,"Beneficios de entrada Golden"))
+                codigoValidado=true
+                Toast.makeText(this, "Sus beneficios han sido cargado correctamente", Toast.LENGTH_SHORT).show()
+                verMenuPrincipal()
             }
-            else {
-                for (n in Codigos){
-                    if(n== Icodigo.toString()){
-                        Toast.makeText(this, "Exito. Bienvenido a la seccion VIP", Toast.LENGTH_SHORT).show()
-                    }
-                    else
-                    {
-                        Icodigo.error = "El codigo no es valido"
-                        return S
-                    }
-                }
+            ENTRADA_BRONZE->{
+                PuntoProvider.listaDePuntos.add(PuntoModel(500,"Beneficios de entrada Bronze"))
+                codigoValidado=true
+                Toast.makeText(this, "Sus beneficios han sido cargado correctamente", Toast.LENGTH_SHORT).show()
+                verMenuPrincipal()
+            }
+            ENTRADA_SILVER->{
+                PuntoProvider.listaDePuntos.add(PuntoModel(750,"Beneficios de entrada Silver"))
+                Toast.makeText(this, "Sus beneficios han sido cargado correctamente", Toast.LENGTH_SHORT).show()
+                codigoValidado=true
+                verMenuPrincipal()
+            }
+            else->{
+                Toast.makeText(this, "El codigo es incorrecto", Toast.LENGTH_SHORT).show()
+                return
             }
         }
 
-        return Icodigo.toString()
+    }
 
-        }
-    private fun verStands() {
-        val intent = Intent(this, ActividadStand::class.java)
+
+
+
+
+
+
+
+
+
+    private fun verMenuPrincipal() {
+        val intent = Intent(this, MenuPrincipalActivity::class.java)
+        intent.putExtra("codigo verificado","correcto")
         startActivity(intent)
     }
     }
