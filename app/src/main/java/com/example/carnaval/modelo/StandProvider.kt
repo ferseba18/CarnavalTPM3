@@ -1,10 +1,28 @@
 package com.example.carnaval.modelo
 
 class StandProvider {
+
+    var listadoPorCategoria: MutableList<StandModel> = mutableListOf()
+
+
+    fun listForCategory(category : String): MutableList<StandModel> {
+
+        val category = category
+
+        for(stand in listadoDeStands){
+            if (stand.category == category){
+                listadoPorCategoria.add(stand)
+            }
+        }
+
+        return listadoPorCategoria
+
+    }
+
     companion object{
-        private val listadoDeStands = listOf<StandModel>(
-            //Ejemplo
-            StandModel("Tiro Al Arco", "Ruta de la imagen")
+
+        val listadoDeStands = listOf<StandModel>(
+
         )
     }
 }

@@ -8,17 +8,6 @@
     tools:context=".actividades.ActividadInicial">
 
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="367dp"
-        android:layout_height="539dp"
-        android:layout_marginTop="44dp"
-        app:layoutDescription="@xml/activity_actividad_inicial_xml_constraintlayout_scene"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <Button
         android:id="@+id/Ingresar"
