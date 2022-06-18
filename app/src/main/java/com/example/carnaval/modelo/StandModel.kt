@@ -4,6 +4,6 @@ data class StandModel(
     val name:String,
     val description:String,
     val image:Int,
-    val price:Double,
+    val price:Int,
     val category:String
 )
