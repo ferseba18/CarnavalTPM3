@@ -20,7 +20,7 @@
         android:padding="10sp">
 
         <TextView
-            android:id="@+id/titulo_puntos"
+            android:id="@+id/titulo_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Juegos"

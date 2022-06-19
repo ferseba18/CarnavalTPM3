@@ -38,7 +38,8 @@ class MenuPrincipalActivity : AppCompatActivity() {
     }
 
     private fun onItemSelect(standCategoryModel: StandCategoryModel) {
-        Toast.makeText( this,standCategoryModel.name, Toast.LENGTH_SHORT).show()
+        stands(standCategoryModel.name)
+        //Toast.makeText( this,standCategoryModel.name, Toast.LENGTH_SHORT).show()
     }
 
 
@@ -110,8 +111,9 @@ class MenuPrincipalActivity : AppCompatActivity() {
         startActivity(camara)
     }
 
-    private fun stands() {
+    private fun stands(category :String) {
         val stands = Intent(this, ActividadStand::class.java)
+        stands.putExtra("category",category)
         startActivity(stands)
     }
 
