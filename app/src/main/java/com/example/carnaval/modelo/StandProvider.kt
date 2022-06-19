@@ -15,6 +15,9 @@ class StandProvider {
 
         fun getStandForName(nameStand:String):StandModel{
             val nameStand = nameStand
+
+            
+
             for (stand in listadoDeStands) {
 
                 if (stand.name == nameStand) {
@@ -29,6 +32,10 @@ class StandProvider {
         fun listForCategory(category: String): MutableList<StandModel> {
 
             val category = category
+
+            if(listadoPorCategoria.isNotEmpty()){
+                listadoPorCategoria.clear()
+            }
 
             for (stand in listadoDeStands) {
 

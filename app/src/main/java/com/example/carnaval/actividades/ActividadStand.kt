@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.carnaval.adaptadores.AdapatadorStands
 import com.example.carnaval.databinding.ActivityActividadStandBinding
 import com.example.carnaval.modelo.StandProvider
@@ -18,8 +19,9 @@ class ActividadStand : AppCompatActivity() {
 
         setContentView(bindingMenu.root)
 
-        val category = intent.getStringExtra("category").toString()
 
+
+        val category = intent.getStringExtra("category").toString()
         initRecyclerView(category)
 
 
