@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carnaval.R
 import com.example.carnaval.modelo.StandCategoryModel
 
-class AdapterCategory(val categorias : List<StandCategoryModel>) :RecyclerView.Adapter<CategoryViewHolder>() {
+class AdapterCategory(private val categorias : List<StandCategoryModel>, private val onClickListener:(StandCategoryModel) -> Unit ) :RecyclerView.Adapter<CategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val layoutInflate = LayoutInflater.from(parent.context)
@@ -15,7 +15,7 @@ class AdapterCategory(val categorias : List<StandCategoryModel>) :RecyclerView.A
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = categorias[position]
-        holder.render(category)
+        holder.render(category, onClickListener)
     }
 
     override fun getItemCount(): Int {

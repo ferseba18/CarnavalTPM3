@@ -1,14 +1,15 @@
 package com.example.carnaval.actividades
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carnaval.R
 import com.example.carnaval.adaptadores.AdapterCategory
 import com.example.carnaval.databinding.ActivityMenuPrincipalBinding
+import com.example.carnaval.modelo.StandCategoryModel
 import com.example.carnaval.modelo.StandCategoryProvider
-import kotlin.text.isEmpty as textIsEmpty
 
 class MenuPrincipalActivity : AppCompatActivity() {
 
@@ -22,13 +23,22 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
         initRecyclerView()
 
+
+
         setListener()
+
     }
 
     private fun initRecyclerView() {
         val recyclerView = bindingMenu.listadoDeCategorias
-        recyclerView.layoutManager =LinearLayoutManager(this)
-        recyclerView.adapter = AdapterCategory(StandCategoryProvider.categorias)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = AdapterCategory(StandCategoryProvider.categorias) { standCategoryModel ->
+                onItemSelect(standCategoryModel)
+            }
+    }
+
+    private fun onItemSelect(standCategoryModel: StandCategoryModel) {
+        Toast.makeText( this,standCategoryModel.name, Toast.LENGTH_SHORT).show()
     }
 
 
@@ -46,16 +56,16 @@ class MenuPrincipalActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.QR-> {
+                R.id.QR -> {
                     qr()
                     true
                 }
 
-                R.id.premios-> {
+                R.id.premios -> {
                     premios()
                     true
                 }
-                R.id.camara-> {
+                R.id.camara -> {
                     camara()
                     true
                 }
@@ -70,46 +80,48 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
     }
 
-    private fun location(){
-        val location = Intent(this,ActividadUbicacion::class.java)
+    private fun location() {
+        val location = Intent(this, ActividadUbicacion::class.java)
         startActivity(location)
     }
 
-    private fun qr(){
-        val qr = Intent (this, ActividadLectorQR::class.java)
+    private fun qr() {
+        val qr = Intent(this, ActividadLectorQR::class.java)
         startActivity(qr)
     }
 
-    private fun premios(){
-        val premios = Intent (this, activity_premios::class.java)
+    private fun premios() {
+        val premios = Intent(this, activity_premios::class.java)
         startActivity(premios)
     }
 
-    private fun evento(){
-        val evento = Intent (this, ActividadEvento::class.java)
+    private fun evento() {
+        val evento = Intent(this, ActividadEvento::class.java)
         startActivity(evento)
     }
 
-    private fun gastronomia(){
-        val food = Intent (this, GastronomiaActivity::class.java)
+    private fun gastronomia() {
+        val food = Intent(this, GastronomiaActivity::class.java)
         startActivity(food)
     }
 
-    private fun camara(){
-        val camara = Intent (this, ActividadCamara::class.java)
+    private fun camara() {
+        val camara = Intent(this, ActividadCamara::class.java)
         startActivity(camara)
     }
-    private fun stands(){
-        val stands = Intent (this, ActividadStand::class.java)
+
+    private fun stands() {
+        val stands = Intent(this, ActividadStand::class.java)
         startActivity(stands)
     }
-    private fun transaction(){
-        val transaction = Intent (this, TransactionActivity::class.java)
+
+    private fun transaction() {
+        val transaction = Intent(this, TransactionActivity::class.java)
         startActivity(transaction)
     }
 
-    private fun validacionDeEntrada(){
-        val inicial = Intent (this, ActividadInicial::class.java)
+    private fun validacionDeEntrada() {
+        val inicial = Intent(this, ActividadInicial::class.java)
         startActivity(inicial)
     }
 

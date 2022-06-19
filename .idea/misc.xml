@@ -10,6 +10,7 @@
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/drawable/ubicacion.xml" value="0.1235" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_actividad_inicial.xml" value="0.1" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_actividad_lector_qr.xml" value="0.2" />
+        <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_actividad_stand.xml" value="0.17916666666666667" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_menu_principal.xml" value="0.18" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/activity_transaction.xml" value="0.1" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
@@ -18,7 +19,7 @@
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/fragment_first.xml" value="0.20416666666666666" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/fragment_second.xml" value="0.20416666666666666" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/item_puntos.xml" value="0.18070652173913043" />
-        <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/item_stands.xml" value="0.17916666666666667" />
+        <entry key="..\:/CarnavalTPM3-master/app/src/main/res/layout/item_stands.xml" value="0.12" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/menu/bottom_navigation.xml" value="0.2" />
         <entry key="..\:/CarnavalTPM3-master/app/src/main/res/menu/menu_main.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/Sebastian/Documents/ANA/Tp/CarnavalTPM3/app/src/main/res/layout/activity_actividad_evento.xml" value="0.14792299898682879" />
