@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.carnaval">
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,22 +17,21 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
 
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
-
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_feria"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_feria_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Carnaval.NoActionBar"
-        android:hardwareAccelerated="true">
-
+        android:theme="@style/Theme.Carnaval.NoActionBar">
+        <activity
+            android:name=".actividades.StandDescriptionActivity"
+            android:exported="false" />
         <activity
             android:name=".actividades.TransactionActivity"
             android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
-
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
@@ -43,19 +44,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".actividades.GastronomiaActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar" />
+
         <activity
             android:name=".actividades.ActividadLectorQR"
             android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.ActividadCamara"
             android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
-
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.MenuPrincipalActivity"
             android:exported="false"
@@ -63,16 +60,12 @@
         <activity
             android:name=".actividades.activity_premios"
             android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar"/>
+            android:theme="@style/Theme.Carnaval.NoActionBar" />
         <activity
             android:name=".actividades.ActividadUbicacion"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".actividades.ActividadEvento"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Carnaval.NoActionBar" />
+
         <activity
             android:name=".actividades.ActividadStand"
             android:exported="false"

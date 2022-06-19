@@ -96,15 +96,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
         startActivity(premios)
     }
 
-    private fun evento() {
-        val evento = Intent(this, ActividadEvento::class.java)
-        startActivity(evento)
-    }
-
-    private fun gastronomia() {
-        val food = Intent(this, GastronomiaActivity::class.java)
-        startActivity(food)
-    }
 
     private fun camara() {
         val camara = Intent(this, ActividadCamara::class.java)
@@ -122,9 +113,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
         startActivity(transaction)
     }
 
-    private fun validacionDeEntrada() {
-        val inicial = Intent(this, ActividadInicial::class.java)
-        startActivity(inicial)
-    }
+
 
 }

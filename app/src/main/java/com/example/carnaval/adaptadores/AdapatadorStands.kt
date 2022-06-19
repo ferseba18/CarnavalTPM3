@@ -7,7 +7,7 @@ import com.example.carnaval.R
 import com.example.carnaval.modelo.StandModel
 
 //Implementar RecyclerView
-class AdapatadorStands (val listadoDeStands : List<StandModel>) : RecyclerView.Adapter<StandViewHolder>(){
+class AdapatadorStands (val listadoDeStands : List<StandModel>, private val onClickListener: (StandModel) ->Unit) : RecyclerView.Adapter<StandViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StandViewHolder {
         val layoutInflate = LayoutInflater.from(parent.context)
@@ -16,7 +16,7 @@ class AdapatadorStands (val listadoDeStands : List<StandModel>) : RecyclerView.A
 
     override fun onBindViewHolder(holder: StandViewHolder, position: Int) {
         val item = listadoDeStands[position]
-        holder.render(item)
+        holder.render(item,onClickListener)
     }
 
     override fun getItemCount(): Int {

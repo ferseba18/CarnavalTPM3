@@ -8,12 +8,14 @@ import com.example.carnaval.modelo.StandModel
 //implementar el viewHolder
 
 class StandViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    
+
     val binding = ItemStandsBinding.bind(view)
 
-    fun render(standModel : StandModel){
+    fun render(standModel: StandModel, onClickListener: (StandModel) -> Unit) {
 
         binding.imageStand.setImageResource(standModel.image)
         binding.title.text = standModel.name
+
+        itemView.setOnClickListener { onClickListener(standModel) }
     }
 }
