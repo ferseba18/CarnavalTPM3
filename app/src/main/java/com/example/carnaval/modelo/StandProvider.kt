@@ -137,7 +137,7 @@ class StandProvider {
             ),
             StandModel(
                 "Puntos",
-                "Kermes cashless es el sistema que te permite cargar dinero en tu aplicacion, adquirir productos gastronómicos y comprar merchandising en el festival. Para cargar tu aplicacion podes ingresar Leyendo el QR de los disponibles ",
+                "Kermes cashless es el sistema que te permite cargar dinero en tu aplicacion, adquirir productos gastronómicos y comprar merchandising en el festival.",
                 R.drawable.puntos,
                 0,
                 "juegos",

@@ -65,15 +65,13 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         createPolylineStands()
         createMarker()
 
-        //map.setInfoWindowAdapter(CustomInfoWindowAdapter())
+        map.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
         enableMyLocation()
     }
 
     internal inner class CustomInfoWindowAdapter : GoogleMap.InfoWindowAdapter {
 
-        // These are both view groups containing an ImageView with id "badge" and two
-        // TextViews with id "title" and "snippet".
         private val window: View = layoutInflater.inflate(R.layout.custom_info_window, null)
         private val contents: View = layoutInflater.inflate(R.layout.custom_info_contents, null)
 
@@ -90,17 +88,7 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         }
 
         private fun render(marker: Marker, view: View) {
-            val badge = when (marker.title!!) {
-                "Gastronomia" -> R.drawable.food_
-                "Eventos" -> R.drawable.recital_lolla
-                "Juegos" -> R.drawable.stand_kermes
-                "Carnaval" -> R.drawable.feria_mapa_principal
-                else -> 0 // Passing 0 to setImageResource will clear the image view.
-            }
 
-            view.findViewById<ImageView>(R.id.badge).setImageResource(badge)
-
-            // Set the title and snippet for the custom info window
             val title: String? = marker.title
             val titleUi = view.findViewById<TextView>(R.id.title)
             val snippet: String? = marker.snippet
@@ -108,6 +96,15 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
             snippetUi.text = snippet
             titleUi.text = title
+
+            for (stand in StandProvider.listadoDeStands) {
+
+                if (stand.name == title) {
+
+                    view.findViewById<ImageView>(R.id.badge).setImageResource(stand.image)
+                }
+
+            }
 
 
         }
