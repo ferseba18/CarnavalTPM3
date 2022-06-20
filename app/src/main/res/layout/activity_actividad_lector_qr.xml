@@ -100,7 +100,8 @@
                     android:padding="5dp"
                     android:inputType="number"
                     android:hint="Ingrese el valor"
-                    android:enabled="true"/>
+                    android:enabled="true"
+                    android:visibility="gone"/>
 
 
             </LinearLayout>

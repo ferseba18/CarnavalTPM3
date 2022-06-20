@@ -2,13 +2,10 @@ package com.example.carnaval.actividades
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.widget.EditText
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.example.carnaval.databinding.ActivityActividadLectorQrBinding
-import com.example.carnaval.modelo.PuntoModel
 import com.example.carnaval.modelo.PuntoProvider
 import com.example.carnaval.modelo.StandProvider
 import com.google.zxing.integration.android.IntentIntegrator
@@ -17,10 +14,7 @@ class ActividadLectorQR : AppCompatActivity() {
 
     private lateinit var binding: ActivityActividadLectorQrBinding
 
-    val PUNTOS_TRANSACCION = 1111
-    val INTENTOS_TRANSACCION = 2222
-    val DESCRIPCION_iNTENTO = "Compra de Intentos"
-    val DESCRIPCION_PUNTOS = "Compra de Puntos"
+    val PUNTOS_TRANSACCION = "puntos"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +22,9 @@ class ActividadLectorQR : AppCompatActivity() {
         binding = ActivityActividadLectorQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         initScanner()
+
+        binding.btnComprar.setOnClickListener { realizarTransaccion() }
 
     }
 
@@ -43,62 +37,66 @@ class ActividadLectorQR : AppCompatActivity() {
         integrator.initiateScan()
     }
 
-    private fun transaccion(tipoDeTransaccion: Int, valor: Int) {
+    private fun realizarTransaccion() {
 
-        if (valor == 0) {
-            Toast.makeText(this, "No se puede realizar esta operacion!", Toast.LENGTH_LONG).show()
-            menuPrincipal()
-        }
+        var nameTransaction = binding.name.text.toString().lowercase()
 
-        when (tipoDeTransaccion) {
+
+        when (nameTransaction) {
+
             PUNTOS_TRANSACCION -> {
-                comprarPuntos(valor)
-                Toast.makeText(this, "Su Compra ha sido Exitosa", Toast.LENGTH_LONG).show()
-                menuPrincipal()
-            }
-            INTENTOS_TRANSACCION -> {
-                if (!sePuedeRealizaeLaOperacion(valor)) {
-                    Toast.makeText(this, "No se puede realizar esta operacion!", Toast.LENGTH_LONG)
-                        .show()
-                    menuPrincipal()
+                var cantidadDePuntos = binding.priceEditable.text.toString()
+
+                if (cantidadDePuntos.isEmpty()){
+                    Toast.makeText(
+                        this,
+                        "Ingresa el valor",
+                        Toast.LENGTH_LONG
+                    ).show()
                     return
                 }
-                comprarIntentos(valor)
+
+                PuntoProvider.comprarPuntos(cantidadDePuntos.toInt())
                 Toast.makeText(this, "Su Compra ha sido Exitosa", Toast.LENGTH_LONG).show()
                 menuPrincipal()
+                return
             }
+
+
             else -> {
-                Toast.makeText(this, "No se puede realizar esta operacion!", Toast.LENGTH_LONG)
-                    .show()
-                menuPrincipal()
+                var puntos = binding.price.text.toString()
+                var confirmacionDeCompra = PuntoProvider.sePuedeRealizaeLaOperacion(puntos.toInt())
+
+                if (confirmacionDeCompra) {
+
+                    PuntoProvider.comprarIntentos(puntos.toInt(), nameTransaction)
+                    Toast.makeText(this, "Su Compra ha sido Exitosa", Toast.LENGTH_LONG).show()
+                    menuPrincipal()
+                    return
+                } else {
+
+                    Toast.makeText(
+                        this,
+                        "No requieres de los puntos suficientes",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    menuPrincipal()
+                    return
+
+                }
+
+
             }
         }
     }
 
-    private fun sePuedeRealizaeLaOperacion(valor: Int): Boolean {
 
-        val cantidadTotalDePuntos = PuntoProvider.cantidadTotalDePuntos()
-        var confirmacion:Boolean =false
+    /*  private fun comprarIntentos(valor: Int) {
+          var puntos = valor * -1
+          PuntoProvider.listaDePuntos.add(PuntoModel(puntos, DESCRIPCION_iNTENTO))
+      }
 
-        if (PuntoProvider.listaDePuntos.isNotEmpty()){
-
-            if (cantidadTotalDePuntos >= valor) {
-                confirmacion=true
-            }
-        }
-
-        return confirmacion
-    }
-
-    private fun comprarIntentos(valor: Int) {
-        var puntos = valor * -1
-        PuntoProvider.listaDePuntos.add(PuntoModel(puntos, DESCRIPCION_iNTENTO))
-    }
-
-    private fun comprarPuntos(valor: Int) {
-        PuntoProvider.listaDePuntos.add(PuntoModel(valor, DESCRIPCION_PUNTOS))
-    }
-
+      */
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -111,9 +109,7 @@ class ActividadLectorQR : AppCompatActivity() {
             } else {
 
                 val nameTransaction = result.contents.toString()
-
-                Toast.makeText(this, nameTransaction, Toast.LENGTH_LONG)
-                    .show()
+                
                 renderTransaction(nameTransaction)
             }
         } else {
@@ -125,12 +121,12 @@ class ActividadLectorQR : AppCompatActivity() {
 
         val standModel = StandProvider.getStandForName(nameTransaction)
 
-        if(nameTransaction.lowercase() == "juegos" ){
+        if (nameTransaction.lowercase() == "puntos") {
             binding.description.text = standModel.description
             binding.name.text = standModel.name
             binding.image.setImageResource(standModel.image)
-            binding.priceEditable.isVisible = true
-            binding.price.isVisible = false
+            binding.priceEditable.visibility = View.VISIBLE
+            binding.price.visibility = View.GONE
             return
         }
 
