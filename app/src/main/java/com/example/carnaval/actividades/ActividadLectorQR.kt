@@ -91,12 +91,6 @@ class ActividadLectorQR : AppCompatActivity() {
     }
 
 
-    /*  private fun comprarIntentos(valor: Int) {
-          var puntos = valor * -1
-          PuntoProvider.listaDePuntos.add(PuntoModel(puntos, DESCRIPCION_iNTENTO))
-      }
-
-      */
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -109,7 +103,7 @@ class ActividadLectorQR : AppCompatActivity() {
             } else {
 
                 val nameTransaction = result.contents.toString()
-                
+
                 renderTransaction(nameTransaction)
             }
         } else {

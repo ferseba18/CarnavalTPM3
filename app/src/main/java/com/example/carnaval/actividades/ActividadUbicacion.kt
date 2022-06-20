@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.content.ContextCompat
 import com.example.carnaval.R
 import com.example.carnaval.databinding.ActivityActividadUbicacionBinding
+import com.example.carnaval.modelo.StandProvider
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -23,9 +24,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolygonOptions
-import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
-import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener
-import android.location.Location
 
 class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
     OnRequestPermissionsResultCallback {
@@ -36,6 +34,8 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
     private val COLOR_GASTRONOMIA = -0x657db
     private val COLOR_STANDS = -0x1
     private val COLOR_EVENTOS = -0x7e387c
+    private val UBICACION_FERIA = LatLng(-34.67035170583668, -58.5628052)
+
 
     companion object {
         const val LOCATION_REQUEST_CODE = 1
@@ -65,7 +65,7 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         createPolylineStands()
         createMarker()
 
-        map.setInfoWindowAdapter(CustomInfoWindowAdapter())
+        //map.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
         enableMyLocation()
     }
@@ -116,33 +116,28 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
     private fun createMarker() {
 
-        val ubicacionFeria = LatLng(-34.67035170583668, -58.5628052)
-        val ubicacionEvento = LatLng(-34.664752334222754, -58.56843709945678)
-        val ubicacionStand = LatLng(-34.66865262913868, -58.56489658355712)
-        val ubicacionGastronomia = LatLng(-34.667205482314564, -58.562986850738525)
-
-        map.addMarker(
-            MarkerOptions().position(ubicacionFeria).title("Carnaval")
-                .snippet("Un festival donde encontraras juegos de destreza, juegos mecánicos, puestos de comida y bebida, sorteos y números artísticos")
-        )
-        map.addMarker(
-            MarkerOptions().position(ubicacionGastronomia).title("Gastronomia")
-                .snippet("Un espacio gastronómico para vivir un encuentro de diversidad de culturas.")
-        )
-        map.addMarker(
-            MarkerOptions().position(ubicacionEvento).title("Eventos")
-                .snippet("Es un lugar donde encontraras musica de todos los estilos; también hay actuaciones cómicas y de danza.")
-        )
-        map.addMarker(
-            MarkerOptions().position(ubicacionStand).title("Juegos")
-                .snippet("Un lugar donde podras encontrar divertirte y mostras tus destrezas")
-        )
+        addMarkerList()
 
         map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(ubicacionFeria, 15f),
+            CameraUpdateFactory.newLatLngZoom(UBICACION_FERIA, 15f),
             2500,
             null
         )
+    }
+
+    private fun addMarkerList() {
+
+        for (stand in StandProvider.listadoDeStands) {
+
+            val ubicacion = LatLng(stand.locationLat, stand.locationLng)
+            val title = stand.name
+            val description = stand.description
+
+            map.addMarker(
+                MarkerOptions().position(ubicacion).title(title)
+                    .snippet(description)
+            )
+        }
     }
 
     private fun createPolylineGastronomia() {
@@ -264,7 +259,7 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
 
                 enableMyLocation()
-                return
+
             } else {
                 Toast.makeText(
                     this,

@@ -5,5 +5,7 @@ data class StandModel(
     val description:String,
     val image:Int,
     val price:Int,
-    val category:String
+    val category:String,
+    val locationLat :Double,
+    val locationLng :Double
 )
