@@ -5,22 +5,19 @@ import com.example.carnaval.R
 class StandProvider {
 
 
-
-
-
     companion object {
 
         var listadoPorCategoria: MutableList<StandModel> = mutableListOf()
-        lateinit var standForName:StandModel
+        lateinit var standForName: StandModel
 
-        fun getStandForName(nameStand:String):StandModel{
+        fun getStandForName(nameStand: String): StandModel {
             val nameStand = nameStand
 
-            
+
 
             for (stand in listadoDeStands) {
 
-                if (stand.name == nameStand) {
+                if (stand.name.lowercase() == nameStand.lowercase()) {
                     standForName = stand
                 }
             }
@@ -33,13 +30,13 @@ class StandProvider {
 
             val category = category
 
-            if(listadoPorCategoria.isNotEmpty()){
+            if (listadoPorCategoria.isNotEmpty()) {
                 listadoPorCategoria.clear()
             }
 
             for (stand in listadoDeStands) {
 
-                if (stand.category == category) {
+                if (stand.category.lowercase() == category.lowercase()) {
                     listadoPorCategoria.add(stand)
                 }
             }
@@ -47,8 +44,6 @@ class StandProvider {
             return listadoPorCategoria
 
         }
-
-
 
 
         val listadoDeStands = listOf<StandModel>(
@@ -120,6 +115,13 @@ class StandProvider {
                 200,
                 "Juegos"
             ),
+            StandModel(
+                "Puntos",
+                "Kermes cashless es el sistema que te permite cargar dinero en tu aplicacion, adquirir productos gastronómicos y comprar merchandising en el festival. Para cargar tu aplicacion podes ingresar Leyendo el QR de los disponibles ",
+                R.drawable.puntos,
+                0,
+                "puntos"
+            )
         )
     }
 }

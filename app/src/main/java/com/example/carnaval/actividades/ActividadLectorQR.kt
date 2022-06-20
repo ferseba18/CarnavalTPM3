@@ -2,11 +2,15 @@ package com.example.carnaval.actividades
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.carnaval.databinding.ActivityActividadLectorQrBinding
 import com.example.carnaval.modelo.PuntoModel
 import com.example.carnaval.modelo.PuntoProvider
+import com.example.carnaval.modelo.StandProvider
 import com.google.zxing.integration.android.IntentIntegrator
 
 class ActividadLectorQR : AppCompatActivity() {
@@ -73,7 +77,7 @@ class ActividadLectorQR : AppCompatActivity() {
 
     private fun sePuedeRealizaeLaOperacion(valor: Int): Boolean {
 
-        val cantidadTotalDePuntos = cantidadTotalDePuntos(PuntoProvider.listaDePuntos)
+        val cantidadTotalDePuntos = PuntoProvider.cantidadTotalDePuntos()
         var confirmacion:Boolean =false
 
         if (PuntoProvider.listaDePuntos.isNotEmpty()){
@@ -95,18 +99,7 @@ class ActividadLectorQR : AppCompatActivity() {
         PuntoProvider.listaDePuntos.add(PuntoModel(valor, DESCRIPCION_PUNTOS))
     }
 
-    private fun tituloTransaccion(tipoDeTransaccion: Int) {
 
-        when (tipoDeTransaccion) {
-            PUNTOS_TRANSACCION -> {
-                binding.tituloTranaccion.text = DESCRIPCION_PUNTOS
-            }
-            INTENTOS_TRANSACCION -> {
-                binding.tituloTranaccion.text = DESCRIPCION_iNTENTO
-            }
-            else -> {}
-        }
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
@@ -117,17 +110,38 @@ class ActividadLectorQR : AppCompatActivity() {
                 menuPrincipal()
             } else {
 
-                val tipoDeTransaccion = result.contents.toInt()
-                tituloTransaccion(tipoDeTransaccion)
-                binding.btnComprar.setOnClickListener {
+                val nameTransaction = result.contents.toString()
 
-                    var valor = binding.editTextNumber.text.toString()
-                    transaccion(tipoDeTransaccion, valor.toInt())
-                }
+                Toast.makeText(this, nameTransaction, Toast.LENGTH_LONG)
+                    .show()
+                renderTransaction(nameTransaction)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    private fun renderTransaction(nameTransaction: String) {
+
+        val standModel = StandProvider.getStandForName(nameTransaction)
+
+        if(nameTransaction.lowercase() == "juegos" ){
+            binding.description.text = standModel.description
+            binding.name.text = standModel.name
+            binding.image.setImageResource(standModel.image)
+            binding.priceEditable.isVisible = true
+            binding.price.isVisible = false
+            return
+        }
+
+
+
+        binding.description.text = standModel.description
+        binding.name.text = standModel.name
+        binding.image.setImageResource(standModel.image)
+        binding.price.text = standModel.price.toString()
+
+
     }
 
     private fun menuPrincipal() {
@@ -135,15 +149,5 @@ class ActividadLectorQR : AppCompatActivity() {
         startActivity(menuPrincipal)
     }
 
-    private fun cantidadTotalDePuntos(listaDePuntos: List<PuntoModel>): Int {
 
-        var cantidadTotalDePuntos = 0
-
-        listaDePuntos.forEach {
-            cantidadTotalDePuntos += it.cantidad
-        }
-
-        return cantidadTotalDePuntos
-
-    }
 }

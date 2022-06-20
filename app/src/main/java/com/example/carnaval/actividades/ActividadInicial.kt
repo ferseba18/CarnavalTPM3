@@ -39,7 +39,7 @@ class ActividadInicial : AppCompatActivity() {
 
     private fun cargarBeneficiosDeEntrada() {
 
-        val codigo = binding.Codigo.text.toString()
+        val codigo = binding.Codigo.text.toString().lowercase()
 
         if (codigo.isEmpty()){
             Toast.makeText(this, "Ingrese el codigo de su entrada", Toast.LENGTH_SHORT).show()

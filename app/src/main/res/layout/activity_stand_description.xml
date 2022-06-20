@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:padding="5dp"
-                    android:text="Valor de la entrada : "
+                    android:text="Valor : "
                     android:textAlignment="textStart"
                     android:textColor="#061C98"
                     android:textSize="20dp"
