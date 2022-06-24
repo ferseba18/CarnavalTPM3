@@ -34,7 +34,8 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
     private val COLOR_GASTRONOMIA = -0x657db
     private val COLOR_STANDS = -0x1
     private val COLOR_EVENTOS = -0x7e387c
-    private val UBICACION_FERIA = LatLng(-34.67035170583668, -58.5628052)
+    private var ubicacionFeria = LatLng(-34.67035170583668, -58.5628052)
+
 
 
     companion object {
@@ -45,6 +46,8 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         super.onCreate(savedInstanceState)
         binding = ActivityActividadUbicacionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         createFragment()
 
@@ -67,13 +70,21 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
         map.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
+        map.setOnInfoWindowClickListener { marker ->
+            val nameStandModel = marker.title.toString()
+
+            standDescription(nameStandModel)
+        }
+
+
+
         enableMyLocation()
     }
 
     internal inner class CustomInfoWindowAdapter : GoogleMap.InfoWindowAdapter {
 
         private val window: View = layoutInflater.inflate(R.layout.custom_info_window, null)
-        private val contents: View = layoutInflater.inflate(R.layout.custom_info_contents, null)
+        private val contents: View = layoutInflater.inflate(R.layout.custom_info_window, null)
 
         override fun getInfoWindow(marker: Marker): View? {
 
@@ -90,17 +101,16 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         private fun render(marker: Marker, view: View) {
 
             val title: String? = marker.title
-            val titleUi = view.findViewById<TextView>(R.id.title)
-            val snippet: String? = marker.snippet
-            val snippetUi = view.findViewById<TextView>(R.id.snippet)
-
-            snippetUi.text = snippet
+            var titleUi = view.findViewById<TextView>(R.id.title)
             titleUi.text = title
+            var descriptionUI = view.findViewById<TextView>(R.id.snippet)
+
+
 
             for (stand in StandProvider.listadoDeStands) {
 
                 if (stand.name == title) {
-
+                    descriptionUI.text = stand.description
                     view.findViewById<ImageView>(R.id.badge).setImageResource(stand.image)
                 }
 
@@ -116,7 +126,7 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         addMarkerList()
 
         map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(UBICACION_FERIA, 15f),
+            CameraUpdateFactory.newLatLngZoom(ubicacionFeria, 17f),
             2500,
             null
         )
@@ -131,11 +141,14 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
             val description = stand.description
 
             map.addMarker(
-                MarkerOptions().position(ubicacion).title(title)
-                    .snippet(description)
+                MarkerOptions().position(ubicacion).title(title).snippet(description)
             )
+
         }
+
     }
+
+
 
     private fun createPolylineGastronomia() {
 
@@ -270,9 +283,10 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
     }
 
-    private fun verStand() {
-        val intent = Intent(this, ActividadStand::class.java)
-        startActivity(intent)
+    private fun standDescription(nameStandModel: String) {
+        val location = Intent(this, StandDescriptionActivity::class.java)
+        location.putExtra("nameStandModel", nameStandModel)
+        startActivity(location)
     }
 
 

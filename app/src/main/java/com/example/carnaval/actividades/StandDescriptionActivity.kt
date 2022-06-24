@@ -1,5 +1,6 @@
 package com.example.carnaval.actividades
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.carnaval.R
@@ -19,6 +20,8 @@ class StandDescriptionActivity : AppCompatActivity() {
         val nameStandModel = intent.getStringExtra("nameStandModel").toString()
 
         renderStand(nameStandModel)
+
+        binding.btnUbicacion.setOnClickListener { location() }
     }
 
     fun renderStand(nameStandModel:String){
@@ -31,5 +34,15 @@ class StandDescriptionActivity : AppCompatActivity() {
         binding.imageStandDescription.setImageResource(standModel.image)
 
 
+    }
+    private fun location() {
+        val name = binding.nameStandDescription.toString()
+        val standModel = StandProvider.getStandForName(name)
+        val lat = standModel.locationLat
+        val lng = standModel.locationLng
+        val location = Intent(this, ActividadUbicacion::class.java)
+        location.putExtra("latitud",lat)
+        location.putExtra("longitud", lng)
+        startActivity(location)
     }
 }
