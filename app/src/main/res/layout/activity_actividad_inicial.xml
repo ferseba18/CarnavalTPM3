@@ -5,45 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_actividad_inicial_scene"
-    tools:context=".actividades.ActividadInicial">
+    tools:context=".actividades.ActividadInicial"
+    android:background="#F3A0EA">
 
-
-
-    <Button
-        android:id="@+id/Ingresar"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/contentLinear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/ingresar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Codigo" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/Codigo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Ingrese el codigo"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
-        android:singleLine="true"/>
+        <ImageView
+            android:id="@+id/imageTicketera"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ticketera" />
+
+        <LinearLayout
+            android:id="@+id/contentBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/Codigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Hola! Ingresa tu codigo"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColorHint="@color/black" />
+
+            <Button
+                android:id="@+id/Ingresar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:text="INGRESAR"
+                app:backgroundTint="#2992C5" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
-        app:srcCompat="@drawable/img_logo"
-        tools:ignore="ImageContrastCheck"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="240dp" />
+        android:id="@+id/imageTicket"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:srcCompat="@drawable/ticket_feria"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

@@ -15,6 +15,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
     private lateinit var bindingMenu: ActivityMenuPrincipalBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingMenu = ActivityMenuPrincipalBinding.inflate(layoutInflater)
