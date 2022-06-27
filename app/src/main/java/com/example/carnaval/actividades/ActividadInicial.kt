@@ -3,6 +3,7 @@ package com.example.carnaval.actividades
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.carnaval.databinding.ActivityActividadInicialBinding
@@ -13,55 +14,54 @@ class ActividadInicial : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityActividadInicialBinding
-    private var beneficiosCargado :Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActividadInicialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(beneficiosCargado){
-           verMenuPrincipal()
-        }
 
-        //binding.Ingresar.setOnClickListener { cargarBeneficiosDeEntrada() }
+        binding.Ingresar.setOnClickListener { cargarBeneficiosDeEntrada() }
+
+
+
 
 
     }
 
     private fun cargarBeneficiosDeEntrada() {
 
+        val codigo = binding.Codigo.text.toString().lowercase()
 
-
-        if (codigoIngresasdo().isEmpty()) {
+        if (codigo.isEmpty()) {
             Toast.makeText(this, "Ingrese el codigo de su entrada", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (TicketProvider.existCode(codigoIngresasdo())) {
+        if (TicketProvider.existCode(codigo)) {
 
-            val ticket = TicketProvider.getTicketForCode(codigoIngresasdo())
+            val ticket = TicketProvider.getTicketForCode(codigo)
 
             PuntoProvider.addPuntosTickets(ticket)
-            beneficiosCargado = true
 
-            Toast.makeText(
-                this,
-                "Sus beneficios han sido cargado correctamente",
-                Toast.LENGTH_SHORT
-            ).show()
+            binding.contentBtn.visibility = View.GONE
+
+            binding.motionLayout.transitionToEnd()
+
             verMenuPrincipal()
 
 
+            return
+
         }
 
+
+
         Toast.makeText(this, "El codigo es incorrecto", Toast.LENGTH_SHORT).show()
+
+        return
     }
 
-    private fun codigoIngresasdo(): String {
-
-        return binding.Codigo.text.toString().lowercase()
-    }
 
     private fun verMenuPrincipal() {
         val intent = Intent(this, MenuPrincipalActivity::class.java)
