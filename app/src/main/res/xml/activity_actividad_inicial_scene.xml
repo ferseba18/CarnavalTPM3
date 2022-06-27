@@ -5,12 +5,12 @@
     <ConstraintSet android:id="@+id/start">
 
         <Constraint
-            android:id="@+id/imageTicket"
             android:layout_height="300dp"
             android:layout_width="300dp"
+            app:layout_constraintTop_toBottomOf="@+id/contentLinear"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="-200dp"/>
+            android:layout_marginStart="-400dp"/>
 
     </ConstraintSet>
 
@@ -20,6 +20,7 @@
             android:id="@+id/imageTicket"
             android:layout_height="300dp"
             android:layout_width="300dp"
+            app:layout_constraintTop_toBottomOf="@+id/contentLinear"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="-400dp"/>
@@ -29,7 +30,7 @@
     <Transition
         app:constraintSetStart="@+id/start"
         app:constraintSetEnd="@id/end"
-        app:duration="1000">
+        app:duration="3000">
         <OnClick app:targetId="@+id/Ingresar" />
     </Transition>
 </MotionScene>
