@@ -20,7 +20,7 @@ class activity_premios : AppCompatActivity(), SensorEventListener {
     private var acceleration = 0f
     private var currentAcceleration = 0f
     private var lastAcceleration = 0f
-    private lateinit var numeros: ArrayList<Int>
+    private val numbers: IntArray = intArrayOf(1,2,3,4,5,6,7,8,9,10)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_premios)
@@ -30,21 +30,10 @@ class activity_premios : AppCompatActivity(), SensorEventListener {
         acceleration = 10f
         currentAcceleration = SensorManager.GRAVITY_EARTH
         lastAcceleration = SensorManager.GRAVITY_EARTH
-        numeros.clear()
-        numeros.add(1)
-        numeros.add(2)
-        numeros.add(3)
-        numeros.add(4)
-        numeros.add(5)
-        numeros.add(6)
-        numeros.add(7)
-        numeros.add(8)
-        numeros.add(9)
-        numeros.add(10)
+
     }
     private val sensorListener: SensorEventListener = object : SensorEventListener {
         override fun onSensorChanged(event: SensorEvent) {
-            var intento= numeros.random()
             val x = event.values[0]
             val y = event.values[1]
             val z = event.values[2]
@@ -53,6 +42,7 @@ class activity_premios : AppCompatActivity(), SensorEventListener {
             val delta: Float = currentAcceleration - lastAcceleration
             acceleration = acceleration * 0.9f + delta
             if (acceleration > 12) {
+                var intento= numbers.random()
                 if (intento==3){
                     Toast.makeText(applicationContext, "Ganaste una Bicicleta", Toast.LENGTH_SHORT).show()
                 }
