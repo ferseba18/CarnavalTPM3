@@ -12,6 +12,7 @@ import com.example.carnaval.modelo.TicketProvider
 
 class ActividadInicial : AppCompatActivity() {
 
+    var entradaVerificada : Boolean = false
 
     private lateinit var binding: ActivityActividadInicialBinding
 
@@ -25,6 +26,16 @@ class ActividadInicial : AppCompatActivity() {
 
 
 
+
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (entradaVerificada) {
+            verMenuPrincipal()
+        }
 
 
     }
@@ -48,7 +59,10 @@ class ActividadInicial : AppCompatActivity() {
 
             binding.motionLayout.transitionToEnd()
 
+            entradaVerificada = true
+
             verMenuPrincipal()
+
 
 
             return
