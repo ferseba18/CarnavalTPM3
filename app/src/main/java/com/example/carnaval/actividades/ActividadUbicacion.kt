@@ -34,7 +34,8 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
     private val COLOR_GASTRONOMIA = -0x657db
     private val COLOR_STANDS = -0x1
     private val COLOR_EVENTOS = -0x7e387c
-    private var ubicacionFeria = LatLng(-34.67035170583668, -58.5628052)
+    private var ubicacionPorDefecto = LatLng(-34.67035170583668, -58.5628052)
+    private  var standName : String = ""
 
 
 
@@ -47,9 +48,32 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         binding = ActivityActividadUbicacionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        standName = intent.getStringExtra("name").toString()
+
+
 
 
         createFragment()
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        if (standName != ""){
+            cambiarUbicacionPorDefecto(standName)
+        }
+    }
+
+
+    private fun cambiarUbicacionPorDefecto(nameStand : String){
+
+        val name = nameStand
+        val standModel = StandProvider.getStandForName(name)
+        val lat = standModel.locationLat
+        val lng = standModel.locationLng
+
+        ubicacionPorDefecto = LatLng(lat, lng)
 
     }
 
@@ -66,7 +90,8 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         createPolylineGastronomia()
         createPolylineEventos()
         createPolylineStands()
-        createMarker()
+        addMarkerList()
+        createMarkerForDefect()
 
         map.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
@@ -121,15 +146,16 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
     }
 
 
-    private fun createMarker() {
+    private fun createMarkerForDefect() {
 
-        addMarkerList()
+
 
         map.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(ubicacionFeria, 17f),
+            CameraUpdateFactory.newLatLngZoom(ubicacionPorDefecto, 17f),
             2500,
             null
         )
+
     }
 
     private fun addMarkerList() {

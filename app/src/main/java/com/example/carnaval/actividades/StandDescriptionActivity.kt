@@ -37,12 +37,8 @@ class StandDescriptionActivity : AppCompatActivity() {
     }
     private fun location() {
         val name = binding.nameStandDescription.toString()
-        val standModel = StandProvider.getStandForName(name)
-        val lat = standModel.locationLat
-        val lng = standModel.locationLng
         val location = Intent(this, ActividadUbicacion::class.java)
-        location.putExtra("latitud",lat)
-        location.putExtra("longitud", lng)
+        location.putExtra("name",name)
         startActivity(location)
     }
 }
