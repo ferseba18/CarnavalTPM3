@@ -26,6 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carnaval.NoActionBar">
         <activity
+            android:name=".actividades.ActivityRuedaCasino"
+            android:exported="false" />
+        <activity
             android:name=".actividades.StandDescriptionActivity"
             android:exported="false" />
         <activity
@@ -44,7 +47,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
         <activity
             android:name=".actividades.ActividadLectorQR"
             android:exported="false"
@@ -57,15 +59,11 @@
             android:name=".actividades.MenuPrincipalActivity"
             android:exported="false"
             android:theme="@style/Theme.Carnaval.NoActionBar" />
-        <activity
-            android:name=".actividades.activity_premios"
-            android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar" />
+
         <activity
             android:name=".actividades.ActividadUbicacion"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".actividades.ActividadStand"
             android:exported="false"

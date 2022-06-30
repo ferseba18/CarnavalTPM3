@@ -4,7 +4,7 @@
 
     <color name="primaryColor">#263238</color>
     <color name="primaryDarkColor">#000a12</color>
-
+    <color name="casino">#3490dc</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#0A80E9</color>

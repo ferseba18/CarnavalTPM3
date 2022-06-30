@@ -64,7 +64,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
                 }
 
                 R.id.premios -> {
-                    premios()
+                    casinoRueda()
                     true
                 }
                 R.id.camara -> {
@@ -92,11 +92,10 @@ class MenuPrincipalActivity : AppCompatActivity() {
         startActivity(qr)
     }
 
-    private fun premios() {
-        val premios = Intent(this, activity_premios::class.java)
-        startActivity(premios)
+    private fun casinoRueda() {
+        val casinoRueda = Intent(this, ActivityRuedaCasino::class.java)
+        startActivity(casinoRueda)
     }
-
 
     private fun camara() {
         val camara = Intent(this, ActividadCamara::class.java)
