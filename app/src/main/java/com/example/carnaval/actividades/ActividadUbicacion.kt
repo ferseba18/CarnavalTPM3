@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.content.ContextCompat
 import com.example.carnaval.R
 import com.example.carnaval.databinding.ActivityActividadUbicacionBinding
+import com.example.carnaval.modelo.PuntoModel
 import com.example.carnaval.modelo.StandProvider
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -36,6 +37,8 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
     private val COLOR_EVENTOS = -0x7e387c
     private var ubicacionPorDefecto = LatLng(-34.67035170583668, -58.5628052)
     private  var standName : String = ""
+    private var listaDeMarker: MutableList<Marker> = mutableListOf()
+
 
 
 
@@ -53,17 +56,24 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
 
 
+
+
         createFragment()
 
     }
 
-
     override fun onStart() {
         super.onStart()
-        if (standName != ""){
+        if(standName != ""){
             cambiarUbicacionPorDefecto(standName)
+
+
+
         }
+
     }
+
+
 
 
     private fun cambiarUbicacionPorDefecto(nameStand : String){
@@ -76,22 +86,35 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         ubicacionPorDefecto = LatLng(lat, lng)
 
     }
+    private fun markerInfoWindowShow(nameStand : String){
+
+        val name = nameStand
+        val standModel = StandProvider.getStandForName(name)
+
+        val nameSra = standModel.name
+
+
+
+        for(marker in listaDeMarker){
+            if (marker.title == nameSra){
+                marker?.showInfoWindow()
+                Toast.makeText(this,marker.title, Toast.LENGTH_LONG).show()
+            }
+
+        }
+
+    }
 
     private fun createFragment() {
-        val mapFragment: SupportMapFragment =
-            supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment: SupportMapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
 
-        map = googleMap
 
-        createPolylineGastronomia()
-        createPolylineEventos()
-        createPolylineStands()
-        addMarkerList()
-        createMarkerForDefect()
+        map = googleMap
 
         map.setInfoWindowAdapter(CustomInfoWindowAdapter())
 
@@ -100,6 +123,26 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
             standDescription(nameStandModel)
         }
+
+        createPolylineGastronomia()
+        createPolylineEventos()
+        createPolylineStands()
+        addMarkerList()
+
+        animateCameraMarker()
+
+        markerInfoWindowShow(standName)
+
+        /*for (marker in  listaDeMarker){
+
+            if(marker.title == standName)
+
+                Toast.makeText(this, marker.title, Toast.LENGTH_SHORT).show()
+
+        }*/
+
+
+
 
 
 
@@ -146,11 +189,10 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
     }
 
 
-    private fun createMarkerForDefect() {
+    private fun animateCameraMarker() {
 
 
-
-        map.animateCamera(
+       map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(ubicacionPorDefecto, 17f),
             2500,
             null
@@ -162,17 +204,35 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
 
         for (stand in StandProvider.listadoDeStands) {
 
-            val ubicacion = LatLng(stand.locationLat, stand.locationLng)
-            val title = stand.name
-            val description = stand.description
 
-            map.addMarker(
+                val ubicacion = LatLng(stand.locationLat, stand.locationLng)
+                val title = stand.name
+                val description = stand.description
+
+
+            var marker = map.addMarker(
                 MarkerOptions().position(ubicacion).title(title).snippet(description)
             )
 
+            if (marker != null) {
+                listaDeMarker.add(marker)
+            }
+
+
+
+
+
+
         }
 
+
+
     }
+
+
+
+
+
 
 
 

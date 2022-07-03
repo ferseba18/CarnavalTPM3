@@ -50,7 +50,7 @@
         <activity
             android:name=".actividades.ActividadLectorQR"
             android:exported="false"
-            android:theme="@style/Theme.Carnaval.NoActionBar" />
+            android:theme="@style/Theme.Carnaval.NoActionBar"/>
         <activity
             android:name=".actividades.ActividadCamara"
             android:exported="false"

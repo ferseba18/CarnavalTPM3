@@ -15,6 +15,7 @@ class ActividadLectorQR : AppCompatActivity() {
     private lateinit var binding: ActivityActividadLectorQrBinding
 
     val PUNTOS_TRANSACCION = "puntos"
+    private var nameTransaction : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,8 @@ class ActividadLectorQR : AppCompatActivity() {
         binding.btnComprar.setOnClickListener { realizarTransaccion() }
 
     }
+
+
 
     private fun initScanner() {
         val integrator = IntentIntegrator(this)
@@ -102,9 +105,15 @@ class ActividadLectorQR : AppCompatActivity() {
                 menuPrincipal()
             } else {
 
-                val nameTransaction = result.contents.toString()
+                nameTransaction = result.contents.toString()
+
+                if (nameTransaction == ""){
+
+                    menuPrincipal()
+                }
 
                 renderTransaction(nameTransaction)
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
