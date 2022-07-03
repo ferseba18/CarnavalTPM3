@@ -84,6 +84,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
     private fun location() {
         val location = Intent(this, ActividadUbicacion::class.java)
+        location.putExtra("name","Feria")
         startActivity(location)
     }
 

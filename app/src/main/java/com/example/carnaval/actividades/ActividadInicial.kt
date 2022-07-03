@@ -51,6 +51,7 @@ class ActividadInicial : AppCompatActivity() {
 
         if (TicketProvider.existCode(codigo)) {
 
+
             val ticket = TicketProvider.getTicketForCode(codigo)
 
             PuntoProvider.addPuntosTickets(ticket)

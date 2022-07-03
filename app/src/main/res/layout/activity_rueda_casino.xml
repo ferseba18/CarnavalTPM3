@@ -79,7 +79,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HAS GANADO"
+            android:text="GANASTE!!!"
             android:textAlignment="center"
             android:textColor="@color/color_eventos"
             android:textSize="30dp"
@@ -92,22 +92,15 @@
 
             <TextView
                 android:id="@+id/premio"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:text="10.0000"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="PUNTOS!"
-                android:textColor="@color/color_eventos"
-                android:textSize="30dp"
-                android:textStyle="bold|italic" />
+
 
         </LinearLayout>
 

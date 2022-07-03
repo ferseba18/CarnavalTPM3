@@ -38,6 +38,11 @@ class PuntoProvider {
             listaDePuntos.add(PuntoModel(ticketModel.valor,ticketModel.description,ticketModel.code))
 
         }
+        fun addPuntosPremios(puntos:Int){
+
+            listaDePuntos.add(PuntoModel(puntos,"Puntos ganados","Rueda Magica"))
+
+        }
 
         fun sePuedeRealizaeLaOperacion(valor: Int): Boolean {
 

@@ -14,8 +14,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.carnaval.R
 import com.example.carnaval.databinding.ActivityRuedaCasinoBinding
+import com.example.carnaval.modelo.PuntoProvider
 import java.util.*
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 class ActivityRuedaCasino : AppCompatActivity() , SensorEventListener {
 
@@ -40,6 +42,15 @@ class ActivityRuedaCasino : AppCompatActivity() , SensorEventListener {
 
     }
 
+    private fun generarPremio(){
+
+        val premio =  100 * Random.nextInt(0,10)
+        val premioString = "$premio PUNTOS"
+        binding.premio.text = premioString
+        PuntoProvider.addPuntosPremios(premio)
+
+    }
+
     private fun animacion() {
         val animacion = binding.imgRuedaCasino
 
@@ -52,6 +63,7 @@ class ActivityRuedaCasino : AppCompatActivity() , SensorEventListener {
             override fun onAnimationEnd(animation: Animator) {
                 Log.e("Animation:", "end")
                 //Ex: here the layout is removed!
+                generarPremio()
                 binding.imgbingo.visibility = View.VISIBLE
                 binding.imgRuedaCasino.visibility = View.GONE
                 binding.contentGanador.visibility = View.VISIBLE

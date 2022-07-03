@@ -98,7 +98,6 @@ class ActividadUbicacion : AppCompatActivity(), OnMapReadyCallback,
         for(marker in listaDeMarker){
             if (marker.title == nameSra){
                 marker?.showInfoWindow()
-                Toast.makeText(this,marker.title, Toast.LENGTH_LONG).show()
             }
 
         }

@@ -143,6 +143,15 @@ class StandProvider {
                 "juegos",
                 -34.67035170583668,
                 -58.5628052
+            ),
+            StandModel(
+                "Feria",
+                "BIENVENIDO!!!!",
+                R.drawable.kermes_feria,
+                0,
+                "",
+                -34.66992327379979,
+                -58.56189250946044
             )
         )
     }

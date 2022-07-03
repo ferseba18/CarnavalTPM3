@@ -24,6 +24,8 @@
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:adjustViewBounds="true"
+           android:src="@drawable/carnaval_logo_map"
+            android:background="@color/trans"
             android:contentDescription="@string/state_badge_label"
             android:scaleType="centerCrop" />
 
